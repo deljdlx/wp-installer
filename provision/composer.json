@@ -40,12 +40,13 @@
         "activate-plugins": "wp plugin activate --all",
         "activate-htaccess": [
             "wp rewrite structure '/%year%/%monthnum%/%postname%/' --hard",
+            "sudo chgrp www-data .htaccess",
             "sudo chmod 775 .htaccess"
         ],
         "chmod": [
             "sudo chgrp -R www-data .",
             "sudo find . -type f -exec chmod 664 {} +",
-            "sudo find . -type d -exec chmod 774 {} +",
+            "sudo find . -type d -exec chmod 774 {} +"
         ],
 
         "wp-install-jwt": "wp plugin install jwt-authentication-for-wp-rest-api --activate",

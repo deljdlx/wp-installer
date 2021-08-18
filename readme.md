@@ -3,9 +3,21 @@
 
 ## Quick start
 
-- Copy content of this repository in a folder named `_install` in the folder in which you will store your Wordpress
+- Go to the folder in which you want to install wordpress
+- Execute command `git clone git@github.com:deljdlx/wp-installer.git _install`
 - Go to `_install` path
 - Launch command `sh install.sh`
+
+### Exemple
+
+```sh
+cd /var/www/html
+mkdir customwordpress
+cd customwordpress
+git clone git@github.com:deljdlx/wp-installer.git _install
+cd _install
+sh install.sh
+```
 
 
 ## Automated installation
