@@ -1,0 +1,71 @@
+{
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org",
+            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+        }
+    ],
+
+    "extra": {
+        "installer-paths": {
+            "wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "wp"
+    },
+
+    "require": {
+        "johnpbloch/wordpress": "^5.6",
+        "wpackagist-theme/twentytwentyone": "*",
+
+        "wpackagist-plugin/user-role-editor": "*",
+        "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "^1.2",
+
+        "wpackagist-plugin/classic-editor": "*",
+        "wpackagist-plugin/view-admin-as": "*",
+
+        "wpackagist-plugin/advanced-custom-fields": "*",
+        "wpackagist-plugin/acf-to-rest-api": "*",
+        "wpackagist-plugin/fakerpress": "*"
+    },
+
+    "scripts": {
+
+        "activate-theme": "wp theme activate",
+        "activate-plugins": "wp plugin activate --all",
+        "activate-htaccess": [
+            "wp rewrite structure '/%year%/%monthnum%/%postname%/' --hard",
+            "sudo chmod 775 .htaccess"
+        ],
+        "chmod": [
+            "sudo chgrp -R www-data .",
+            "sudo find . -type f -exec chmod 664 {} +",
+            "sudo find . -type d -exec chmod 774 {} +",
+        ],
+
+        "wp-install-jwt": "wp plugin install jwt-authentication-for-wp-rest-api --activate",
+
+        "wp-install-classic-editor": "wp plugin install classic-editor --activate",
+        "wp-install-html-editor-syntax-highlighter": "wp plugin install html-editor-syntax-highlighter --activate",
+
+        "wp-install-all": [
+            "wp plugin install classic-editor --activate",
+            "wp plugin install html-editor-syntax-highlighter --activate",
+
+            "wp plugin install user-role-editor --activate",
+            "wp plugin install view-admin-as --activate",
+            "wp plugin install jwt-authentication-for-wp-rest-api --activate",
+
+            "wp plugin install fakerpress --activate",
+            "wp plugin install custom-post-type-ui --activate",
+            "wp plugin install advanced-custom-fields --activate",
+            "wp plugin install acf-to-rest-api --activate"
+        ]
+    }
+}
+
