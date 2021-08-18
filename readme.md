@@ -3,7 +3,7 @@
 
 ## Quick start
 
-- Copy this repository in the folder which will store your Wordpress
+- Copy content of this repository in a folder named `_install` in the folder in which you will store your Wordpress
 - Go to `_install` path
 - Launch command `sh install.sh`
 
