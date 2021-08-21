@@ -80,7 +80,7 @@ echo "✔️ Mysql user : " $MYSQL_USER;
 echo
 
 if [ -z $MYSQL_PASSWORD ]; then
-    read -p "❔ Mysql user ($MYSQL_PASSWORD_DEFAULT) : " MYSQL_PASSWORD;
+    read -p "❔ Mysql password ($MYSQL_PASSWORD_DEFAULT) : " MYSQL_PASSWORD;
     if [ -z $MYSQL_PASSWORD ]; then
         MYSQL_PASSWORD=$MYSQL_PASSWORD_DEFAULT;
     fi
