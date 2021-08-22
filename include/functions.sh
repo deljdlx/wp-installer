@@ -228,13 +228,21 @@ wpi_test_url()
 {
     CHECK_URL=`curl -o /dev/null --silent --head --write-out '%{http_code}' $1/`
     if [ "$CHECK_URL" = 404 ]; then
-        echo "❌ URL $1 can no be found. Please check your configuration. Installation stopped.";
-        exit;
+        echo "❌ URL $1 can no be found. Please check your configuration.";
+
+        read -p "Continue ? [y]/n : " CONFIRM_INSTALL;
+        if [ "$CONFIRM_INSTALL" = "n" ]; then
+            echo "❌ Aborting installation";
+            exit;
+        else
+            echo "✔️ Starting installation";
+        fi
+
+
     else
         echo "✔️ URL $1 OK. Processing installation";
     fi
 }
-
 
 wpi_test_parent_url()
 {
